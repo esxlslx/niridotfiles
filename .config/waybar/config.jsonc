@@ -1,0 +1,160 @@
+// See: https://github.com/Alexays/Waybar/wiki/Module:-Workspaces
+// See: https://github.com/mhkarimi1383/waybar/blob/main/config.jsonc
+{	
+		"width": 1600,
+		"height": 25,
+    		"layer": "top",
+    		"position": "top",
+		"exclusive": true,
+		"passthrough": false,
+		"margin-top": 6,
+		"spacing": 8,
+		"fixed-center": true,
+		"reload_style_on_change": true,
+		"modules-left": [
+			"custom/notifications",
+			"custom/sep",
+			"tray",
+			"custom/sep",
+			"niri/language",
+			"niri/window"
+		    ],
+		"modules-center": [
+			"clock"
+			],
+		"modules-right": [
+			"privacy", "custom/sep",
+			"custom/sep",
+			"pulseaudio", "memory",
+			"cpu"
+			],
+ 		/*"custom/sep": {
+			"format": "|",
+			"tooltip": false,
+		},*/
+"niri/window": {
+    "format": "{app_id}",
+    "icon": true,
+    "icon-size": 14,
+    "seperate-outputs": false,
+"rewrite": {
+	"io.github.kukuruzka165.materialgram": "materialgram",
+	"com.obsproject.Studio": "obs",
+	"com.github.th_ch.youtube_music": "ytm"
+}
+  },
+
+"cava": {
+                "framerate": 60,
+                "autosens": 1,
+                "bars": 8,
+                "lower_cutoff_freq": 50,
+                "higher_cutoff_freq": 10000,
+                "method": "pulse",
+                "source": "auto",
+                "stereo": true,
+                "bar_delimiter": 0,
+                "noise_reduction": 0.30,
+                "input_delay": 0,
+                "format-icons" : ["", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ]
+           },
+
+"niri/workspaces": {
+  "disable-scroll": false,
+  "show-special": false,
+	"format": "{icon}",
+		"format-icons": {
+		"active": "1",
+		"default": "0"
+		}
+},
+	"privacy": {
+			"icon-spacing": 10,
+			"icon-size": 12,
+			"transition-duration": 250,
+			"modules": [
+				{
+					"type": "screenshare",
+					"tooltip": true,
+					"tooltip-icon-size": 24
+				},
+				{
+					"type": "audio-in",
+					"tooltip": true,
+					"tooltip-icon-size": 24
+				}
+			],
+			"ignore-monitor": true,
+			"ignore": [
+				{
+					//"type": "screenshare",
+					//"name": "obs"
+
+					"type": "audio-in",
+					"name": "cava"
+				}
+			]
+		},
+/*	"network": {
+        	"format-wifi": "󰤯",
+        	"format-ethernet": "󰈀",
+        	"format-linked": "󰈀",
+        	"format-disconnected": "󰤮",
+          "on-click": "python ~/.config/rofi/network/network.py",
+	  "on-click-right": "/mnt/bine4/scripts/wallpaperkonachan.bash"
+	}, */
+
+ 
+  "custom/notifications": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#DB4740'></span>",
+      "none": "",
+      "dnd-notification":"<span foreground='#DB4740'></span>",
+      "dnd-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+	"tray": {
+		"icon-size": 16,
+		"spacing": 6
+	},
+    
+  "clock": {
+    "format": "{:%H:%M:%S  %d.%m.%y}",
+	"timezone": "Europe/Moscow",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"interval": 1
+  },
+
+  "pulseaudio": {
+		"format": "{volume}% {icon}",
+        	"format-muted": "MUTE",
+		"format-icons": {
+			"default": [" ", " ", " "]},
+			"on-click": "pavucontrol",
+	         "tooltip-format": "{volume}%"
+  },
+ 
+        	
+    	"niri/language": {
+        	"format": "{}",
+			"format-en": "us",
+			"format-ru": "ru",
+			"format-uk": "ua"
+			    	},
+  "memory": {
+    "interval": 5,
+    "format": "Mem {}%"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {usage:2}%"
+  }
+}
