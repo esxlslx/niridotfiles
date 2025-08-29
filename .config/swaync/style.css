@@ -1,0 +1,229 @@
+@import "/home/falguren/.config/swaync/matugen/matugen-swaync.css";
+
+@define-color foreground @on_surface;
+@define-color background @surface; 
+@define-color noti-border-color @primary; 
+@define-color noti-close-bg @tertiary_container; 
+@define-color noti-close-bg-hover @tertiary; 
+@define-color noti-bg-hover @surface_container_high; 
+@define-color noti-bg-focus @surface_container_highest; 
+@define-color noti-urgent @error_container; 
+@define-color bg-selected @primary; 
+* {
+  color: @foreground;
+  font-family: Liga SFMono Nerd Font;
+}
+
+.notification-row {
+  outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+   background-color: transparent;
+}
+
+.notification {
+  background-color: @background;
+  border: none;
+  border-radius: 1em;
+  margin: 6px 12px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+.critical {
+  background: @noti-urgent;
+  color: @on_error_container;
+  padding: 2px;
+}
+
+.notification-content {
+  padding: 6px;
+}
+
+.close-button {
+  background: @noti-close-bg;
+  color: @on_tertiary_container;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 1em;
+  margin-top: 10px;
+  margin-right: 16px;
+  box-shadow: none;
+  border: none;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: @noti-close-bg-hover;
+  transition: all 0.15s ease-in-out;
+  border: none;
+}
+
+.notification-default-action,
+.notification-action {
+  padding: 4px;
+  margin: 0;
+  box-shadow: none;
+  background: @surface_container;
+  border: none;
+  color: @on_surface;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  -gtk-icon-effect: none;
+  background: @noti-bg-hover;
+}
+
+.notification-default-action {
+  border-radius: 12px;
+}
+
+/* When alternative actions are visible */
+.notification-default-action:not(:only-child) {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.notification-action {
+  border-radius: 0px;
+  border-top: none;
+  border-right: none;
+}
+
+/* add bottom border radius to eliminate clipping */
+.notification-action:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.notification-action:last-child {
+  border-bottom-right-radius: 10px;
+  border-right: 1px solid @noti-border-color;
+}
+
+.image {
+}
+
+.body-image {
+  margin-top: 6px;
+  background-color: @on_surface;
+  border-radius: 12px;
+}
+
+/* notification setting */
+.summary {
+  font-weight: bold;
+  background: transparent;
+  color: @on_surface;
+  text-shadow: none;
+}
+
+.time {
+  font-weight: bold;
+  background: transparent;
+  color: @on_surface;
+  text-shadow: none;
+  margin-right: 18px;
+}
+
+.body {
+  font-weight: normal;
+  background: transparent;
+  color: @on_surface;
+  text-shadow: none;
+}
+
+/* The "Notifications" and "Do Not Disturb" text widget */
+.top-action-title {
+  color: @on_surface;
+  text-shadow: none;
+}
+
+.control-center {
+  background-color: @background;
+  border: 5px solid @primary;
+  border-radius: 1em;
+}
+
+.control-center-list {
+  background: @background;
+}
+
+.floating-notifications {
+  background: transparent;
+}
+
+/* Window behind control center and on all other monitors */
+.blank-window {
+  background: transparent;
+}
+
+/*** Widgets ***/
+
+/* Title widget */
+.widget-title {
+  margin: 8px;
+  font-weight: bold;
+}
+
+.widget-title > button {
+  color: @on_primary;
+  background: @primary;
+  border: none;
+  border-radius: 12px;
+}
+
+.widget-title > button:hover {
+  background: @primary_container;
+  color: @on_primary_container;
+}
+
+/* DND widget */
+.widget-dnd {
+  margin: 8px;
+}
+
+.widget-dnd > switch {
+  border-radius: 12px;
+  background: @color0;
+  border: 5px solid @surface_container_high;
+  box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+  background: @primary;
+}
+
+.widget-dnd > switch slider {
+  background: @outline;
+  border-radius: 12px;
+}
+
+/* Mpris widget */
+.widget-mpris {
+  /* The parent to all players */
+}
+
+.widget-mpris-player {
+  padding: 8px;
+  margin: 8px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+}
+
+/* Volume and Brightness Widget */
+.widget-volume {
+  background-color: transparent;
+  padding: 4px 8px 8px 8px;
+  margin: 0px 8px 8px 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+
