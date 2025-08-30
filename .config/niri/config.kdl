@@ -1,12 +1,12 @@
 spawn-at-startup 		"waybar"
-spawn-at-startup 		"xwayland-satellite"
+//spawn-at-startup 		"xwayland-satellite"
 spawn-at-startup 		"swww-daemon"
 spawn-at-startup 		"Pipewire"
 spawn-at-startup 		"swaync"
 spawn-at-startup                "nm-applet" "--indicator"
 spawn-at-startup		"blueman-applet"
 spawn-at-startup 		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup 		"bash" "-c" "wl-paste --watch cliphist store &"
+spawn-sh-at-startup 		"bash -c wl-paste --watch cliphist store &"
 
 binds {
 
@@ -102,7 +102,7 @@ binds {
     Mod+C 			{ center-column; }
     Mod+Ctrl+C 			{ center-visible-columns; }
     Alt+Tab 			{ focus-column-right; }
-    Alt+Shift+Tab 		{ focus-column-left; }
+    Alt+Ctrl+Tab 		{ focus-column-left; }
 
     Mod+Minus 			{ set-column-width "-10%"; }
     Mod+Equal 			{ set-column-width "+10%"; }
@@ -184,7 +184,7 @@ window-rule {
 
 
 environment {
-    		DISPLAY ":0"
+    		//DISPLAY ":0"
 		XCURSOR_THEME "Bibata-Modern-Classic"
        		XCURSOR_SIZE "20"
 		XDG_CURRENT_DESKTOP "niri"
