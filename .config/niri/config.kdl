@@ -201,7 +201,7 @@ layout {
 		//center-focused-column "on-overflow"
 	  	//empty-workspace-above-first 
                 always-center-single-column
- 		//background-color "transparent"
+ 		background-color "transparent"
 
 
 default-column-width {
@@ -270,11 +270,11 @@ layer-rule {
 		opacity 0.999999
 }
 
-layer-rule {
 
-		match namespace="^wallpaper$"
-		place-within-backdrop true
-		match at-startup=true
+layer-rule {
+    match namespace="swww-daemon"
+    match namespace="mpvpaper"
+    place-within-backdrop true
 }
 
 hotkey-overlay {
@@ -282,10 +282,10 @@ hotkey-overlay {
 }
 
 overview {
-		backdrop-color "#213937"
+		backdrop-color "#1f1f1f"
 	 	zoom 0.25
     		workspace-shadow {
-        	off
+        	//off
     }
 }
 
