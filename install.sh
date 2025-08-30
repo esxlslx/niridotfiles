@@ -17,12 +17,10 @@ echo -e "\033[0;36m---> Обновление системы после доба�
 sudo pacman -Syu --noconfirm
 
 sudo pacman -S git base-devel fuzzel waybar niri kitty firefox yazi swaync waypaper mpv telegram-desktop discord neovim fastfetch 7zip unzip unrar btop lact ntfs-3g stow noto-fonts noto-fonts-cjk noto-fonts-emoji swww mpvpaper ark grim slurp calf lsp-plugins easyeffects nwg-look bitwarden obsidian xwayland-satellite matugen blueman fish ffmpegthumbnailer gzip xdg-desktop-portal-gnome hyprpicker lutris rhythmbox qbittorrent gnome-calculator nautilus imagemagick kdenlive krita gparted onlyoffice-bin
-stow .
-cd ~
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 cd .. 
 rm -rf paru
-paru -S zen-browser-bin xnviewmp archarchive portproton ttf-times-new-roman zoom throne-git youtube-music-git vscodium labwc protonup-qt protontricks power-options-gtk-git
-
+paru -S zen-browser-bin xnviewmp archarchive portproton ttf-times-new-roman zoom throne youtube-music-git vscodium labwc protonup-qt protontricks power-options-gtk-git
+stow .
