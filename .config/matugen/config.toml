@@ -11,24 +11,24 @@ version_check = false
 
 # Waybar
 [templates.waybar]
-input_path = '~/.config/matugen/templates/matugen-waybar.css'
+input_path = '~/.config/matugen/templates/waybar.css'
 output_path = '~/.config/waybar/matugen/matugen-waybar.css'
 post_hook = 'pkill -SIGUSR2 waybar'
 
 # Swaync
 [templates.swaync]
-input_path = '~/.config/matugen/templates/matugen-swaync.css'
+input_path = '~/.config/matugen/templates/swaync.css'
 output_path = '~/.config/swaync/matugen/matugen-swaync.css'
 post_hook = 'swaync-client -rs'
 
 # Gtk3
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/matugen-gtk.css'
+input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
 
 # Gtk4
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/matugen-gtk.css'
+input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
 
 # Qt5
@@ -48,11 +48,25 @@ output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
 
 # Cava
 [templates.cava]
-input_path = '~/.config/matugen/templates/matugen-cava'
+input_path = '~/.config/matugen/templates/cava'
 output_path = '~/.config/cava/matugen/config'
 
 # Fuzzel
 [templates.fuzzel]
-input_path = '~/.config/matugen/templates/matugen-fuzzel.ini'
+input_path = '~/.config/matugen/templates/fuzzel.ini'
 output_path = '~/.config/fuzzel/matugen/colors.ini'
 
+# Kitty
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+
+# Btop
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+# Yazi
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
