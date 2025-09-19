@@ -34,4 +34,6 @@ prepend_keymap = [
     # If you use `x-systemd.automount` in /etc/fstab or manually added automount unit, you can use `--automount` to automount device automatically
     { on = [ "g", "m" ], run = "plugin gvfs -- jump-to-device --automount", desc = "Automount then select device to jump to its mount point" },
     { on = [ "`", "`" ], run = "plugin gvfs -- jump-back-prev-cwd", desc = "Jump back to the position before jumped to device" },
+
+    { on = [ "<C-n>" ], run = '''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm''' },
 ]

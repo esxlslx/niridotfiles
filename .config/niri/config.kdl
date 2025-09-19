@@ -15,9 +15,9 @@ binds {
     Mod+V			{ spawn "~/.config/scripts/cliphist-fuzzel-img"; }
     Mod+D			{ spawn "fuzzel"; } 
     Mod+Shift+C 		{ spawn "hyprpicker" "-a" "$(wl-paste)"; }
-    MoD+Ctrl+P			{ spawn "waypaper"; }
-
-    Mod+MouseForward  		{ focus-workspace 1 ; }
+    Mod+Ctrl+P			{ spawn "waypaper"; }
+    Mod+B			{ spawn "missioncenter"; }
+    Mod+MouseForward  		{ focus-workspace 1; }
     Mod+MouseBack repeat=false	{ toggle-overview; }
    
     XF86AudioPlay 		{ spawn "playerctl" "play-pause"; }
@@ -115,7 +115,7 @@ binds {
     Mod+Shift+P 		{ quit; }
 }
 	screenshot-path "~/Pictures/Screenshot/Screenshot %d-%m-%y %H-%M-%S.png"
-
+	
 window-rule {
 		match app-id="firefox$" title="^Picture-in-Picture$"
 		match app-id="zen$" title="^Picture-in-Picture$"
@@ -195,7 +195,7 @@ environment {
 }
 
 layout {
-    		gaps 3
+    		gaps 8
 		//center-focused-column "on-overflow"
 	  	//empty-workspace-above-first 
                 always-center-single-column
@@ -335,5 +335,6 @@ animations {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 }
+
 
 prefer-no-csd
