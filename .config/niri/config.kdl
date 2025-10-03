@@ -10,7 +10,7 @@ spawn-at-startup 		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 binds {
 
     Mod+E            		{ spawn "nautilus"; }
-    Mod+D			{ spawn "vicinae"; }
+    Mod+D			{ spawn "vicinae" "toggle"; }
     Mod+V			{ spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     Mod+W 			{ spawn "kitty" "-e" "yazi"; }
     Mod+Return			{ spawn "kitty"; }
