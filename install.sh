@@ -16,11 +16,8 @@ fi
 echo -e "\033[0;36m---> Обновление системы после добавления Chaotic-AUR...\033[0m"
 sudo pacman -Syu --noconfirm
 
-sudo pacman -S git base-devel fuzzel waybar niri kitty firefox yazi swaync waypaper mpv telegram-desktop discord neovim fastfetch 7zip unzip unrar btop lact ntfs-3g stow noto-fonts noto-fonts-cjk noto-fonts-emoji swww mpvpaper ark grim slurp calf lsp-plugins easyeffects nwg-look bitwarden obsidian xwayland-satellite matugen blueman fish ffmpegthumbnailer gzip xdg-desktop-portal-gnome hyprpicker lutris rhythmbox qbittorrent gnome-calculator nautilus imagemagick kdenlive krita gparted onlyoffice-bin okular dragon-drop mission-center
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-cd .. 
-rm -rf paru
-paru -S zen-browser-bin xnviewmp archarchive portproton ttf-times-new-roman zoom throne youtube-music-git vscodium labwc protonup-qt protontricks power-options-gtk-git lsd
-stow .
+sudo pacman -S paru --noconfirm
+
+sudo pacman -S --noconfirm --needed git base-devel 7zip alacritty ark ayugram-desktop bibata-cursor-theme bitwarden blueman btop calf cliphist duf discord easyeffects-git fastfetch ffmpegthumbnailer firefox fish flatpak fuzzel gamemode gamescope gdm goverlay gthumb gparted hyprpicker kitty krita lact lvm2 lsp-plugins libreoffice-fresh-ru lutris matugen-git mission-center mpv mpvpaper neovim network-manager-applet ntfs-3g niri noto-fonts noto-fonts-cjk noto-fonts-emoji nautilus nwg-look obs-studio obsidian okular onlyoffice-bin polkit-gnome protontricks protonup-qt qbittorrent qalculate-gtk qt5ct qt6ct rhythmbox snapper snapper-gui-git steam swaync swww unrar unzip vscodium warpinator waybar waypaper-git xorg-xhost xwayland-satellite xdg-desktop-portal-gnome yazi youtube-music zen-browser-bin imagemagick
+
+paru -S portproton ttf-times-new-roman zoom throne power-options-gtk-git grub-customizer lmstudio onlinefix-linux-launcher-bin vicinae equicord-hook equicord-installer-bin

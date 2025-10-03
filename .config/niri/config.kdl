@@ -5,15 +5,17 @@ spawn-at-startup 		"swaync"
 spawn-at-startup                "nm-applet" "--indicator"
 spawn-at-startup		"blueman-applet"
 spawn-at-startup 		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup 		"bash" "-c" "wl-paste --watch cliphist store &"
+//spawn-at-startup 		"bash" "-c" "wl-paste --watch cliphist store &"
 
 binds {
 
     Mod+E            		{ spawn "nautilus"; }
+    Mod+D			{ spawn "vicinae"; }
+    Mod+V			{ spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
     Mod+W 			{ spawn "kitty" "-e" "yazi"; }
     Mod+Return			{ spawn "kitty"; }
-    Mod+V			{ spawn "~/.config/scripts/cliphist-fuzzel-img"; }
-    Mod+D			{ spawn "fuzzel"; } 
+    //Mod+V			{ spawn "~/.config/scripts/cliphist-fuzzel-img"; }
+    Mod+Shift+D			{ spawn "fuzzel"; } 
     Mod+Shift+C 		{ spawn "hyprpicker" "-a" "$(wl-paste)"; }
     Mod+Ctrl+P			{ spawn "waypaper"; }
     Mod+B			{ spawn "missioncenter"; }
@@ -54,10 +56,10 @@ binds {
     Mod+Ctrl+Home 		{ move-column-to-first; }
     Mod+Ctrl+End 		{ move-column-to-last; }
 
-    //Mod+Shift+Left 		{ focus-monitor-left; }
-    //Mod+Shift+Down 		{ focus-monitor-down; }
-    //Mod+Shift+Up 		{ focus-monitor-up; }
-    //Mod+Shift+Right 		{ focus-monitor-right; }
+    Mod+Ctrl+Shift+O 		{ focus-monitor-left; }
+    Mod+Ctrl+Shift+P 		{ focus-monitor-right; }
+    //Mod+Shift+Up 		{ focus-monitor-down; }
+    //Mod+Shift+Right 		{ focus-monitor-up; }
 
     Mod+Shift+Ctrl+Left 	{ move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down 	{ move-column-to-monitor-down; }
@@ -255,11 +257,6 @@ cursor {
 output "HDMI-A-1" {
     		mode "1920x1080@60"
 		focus-at-startup	
-}
-
-output "DP-3" {
-		mode "1920x1080@60"
-		position x=0 y=0
 }
 
 layer-rule {
