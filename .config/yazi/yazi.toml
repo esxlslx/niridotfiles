@@ -1,5 +1,10 @@
 [plugin]
 
+[opener]
+edit = [
+    { run = 'nvim "$@"', desc = "Neovim", block = true, for = "unix" },
+]
+
 prepend_previewers = [
     { name = "*.csv", run = "rich-preview"}, # for csv files
     { name = "*.md", run = "rich-preview" }, # for markdown (.md) files
@@ -10,6 +15,8 @@ prepend_previewers = [
 ]
 
 [mgr]
-linemode = "size"
+linemode = "size_and_mtime"
+sort_by = "alphabetical"
+
 
 theme = "yazi-theme.toml"

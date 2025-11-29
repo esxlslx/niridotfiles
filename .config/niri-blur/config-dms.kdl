@@ -1,16 +1,12 @@
 
     // === Startup ===
-spawn-sh-at-startup 		"vicinae server"
-spawn-at-startup		"waybar" 
-spawn-at-startup		"awww-daemon"
-spawn-at-startup		"swaync"
-spawn-at-startup		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup		"dms" "run"
+spawn-at-startup		"bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup 		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup		"/usr/lib/xdg-desktop-portal-gnome"
 spawn-at-startup		"nm-applet" "--indicator"
 spawn-at-startup		"blueman-applet"
 spawn-at-startup		"flameshot"
-spawn-at-startup		"xwayland-satellite"
-//spawn-at-startup 		"clipse" "-listen"
 
 config-notification {
     disable-failed
@@ -21,39 +17,45 @@ binds {
     Mod+X			repeat=false { toggle-overview; }
     Mod+MouseBack		repeat=false { toggle-overview; }
     Mod+Shift+Slash		{ show-hotkey-overlay; }
+    Mod+A			hotkey-overlay-title="Open Browser: Zen" { spawn "zen-browser"; }
     Mod+E			hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
-    Mod+W			hotkey-overlay-title="File Manager: Yazi" { spawn "kitty" "-e" "yazi"; }
-    //Mod+Shift+Home		hotkey-overlay-title="Hide/Show Bar" { spawn "dms" "ipc" "call" "bar" "toggle"; }
+    Mod+W			hotkey-overlay-title="File Manager: Yazi" { spawn "ghostty" "-e" "yazi"; }
+    Mod+Shift+Home		hotkey-overlay-title="Hide/Show Bar" { spawn "dms" "ipc" "call" "bar" "toggle"; }
+    Mod+Shift+Insert		hotkey-overlay-title="LockScreen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
     // === Application Launchers ===
-    Mod+Return			hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-    Mod+D			hotkey-overlay-title="Application Launcher" repeat=false { spawn "vicinae" "toggle"; }
-    Mod+Shift+D			{ spawn "fuzzel"; }			
-   // Mod+Shift+V			repeat=false { spawn "clipse-gui"; }    
-    Mod+V			hotkey-overlay-title="Clipboard Manager" repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
+    Mod+Return			hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Mod+D			hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+V			hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+Comma			hotkey-overlay-title="Settings" { spawn "dms" "ipc" "call" "settings" "toggle"; }
+    Mod+N			hotkey-overlay-title="Notifications History" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
     Mod+M			hotkey-overlay-title="Task Manager" { spawn "missioncenter"; }
-    Mod+N			hotkey-overlay-title="Notifications" { spawn "swaync-client" "-t"; }
 
     // === Other Apps ===
     Mod+Shift+C			{ spawn "hyprpicker" "-a" "$(wl-paste)"; }
-    Mod+Ctrl+P			{ spawn "waypaper"; }
-    Mod+Shift+P			{ spawn-sh "/home/falguren/.config/niri/script/off.sh"; }
+    //Mod+Ctrl+P			{ spawn "waypaper"; }
+    Mod+Ctrl+P			{ spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
+    Mod+Ctrl+O			{ spawn "qs" "-c" "noctalia-shell" "ipc" "call" "screenRecorder" "toggle"; }
 
     // === Security ===
-    Mod+Shift+Delete			{ quit; }
+    Mod+Shift+P			{ quit; }
 
     // === Audio Controls ===
-    XF86AudioPlay 		{ spawn "playerctl" "play-pause"; }
-    XF86AudioNext 		{ spawn "playerctl" "next"; }
-    XF86AudioPrev 		{ spawn "playerctl" "previous"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" "-l" "1"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-" "-l" "1"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
+    XF86AudioMute allow-when-locked=true 	{ spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioPlay allow-when-locked=true	{ spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioNext allow-when-locked=true 	{ spawn "dms" "ipc" "call" "mpris" "next"; }
+    XF86AudioPrev allow-when-locked=true 	{ spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86AudioStop allow-when-locked=true	{ spawn "dms" "ipc" "call" "mpris" "stop"; }
 
     // === Brightness Controls ===
     //XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
     //XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
-    
+    XF86HomePage allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
+    XF86Mail allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
+ 
+
     // === Window Management ===
     Mod+Shift+Q			repeat=false { close-window; }
     Mod+Shift+Space		{ toggle-window-floating; }
@@ -167,21 +169,23 @@ binds {
     Mod+Shift+Equal		{ set-window-height "+10%"; }
 
     // === Screenshots ===
-    Mod+Shift+Print      	{ screenshot; }
-    Ctrl+Print       		{ screenshot-screen; }
+    Ctrl+Print			{ screenshot; }
     Alt+Print			{ screenshot-window; }
-    Mod+Ctrl+Print		{ spawn "flameshot" "gui"; }
+    Mod+Shift+Print		{ spawn "flameshot" "gui"; }
 
 }
 	screenshot-path "~/Pictures/Screenshot/Screenshot %d-%m-%y %H-%M-%S.png"
 	prefer-no-csd
 
 environment {
+	XCURSOR_THEME "Bibata-Modern-Classic"
+	XCURSOR_SIZE "20"
 	XDG_CURRENT_DESKTOP "niri"
 	XDG_SESSION_TYPE "wayland"
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "gtk3"
-	ELECTRON_OZONE_PLATFORM_HINT "wayland"
+ 	QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+	ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 input {
@@ -210,17 +214,13 @@ cursor {
 
 output "DP-2" {
 	mode "2560x1440@180.000"
-	scale 1.0
 	focus-at-startup
-	position x=1920 y=0
-	//variable-refresh-rate
+	variable-refresh-rate on-demand=true
 }
 
 output "HDMI-A-1" {
-    off
-	scale 1.0
 	mode "1920x1080@60"
-	position x=0 y=0
+	position x=2560 y=0
 }
 
 hotkey-overlay {
@@ -228,11 +228,17 @@ hotkey-overlay {
 }
 
 layout {
-	gaps 6
+	 blur {
+        on
+        passes 4
+        radius 2.5
+        noise 0.05
+    }
+	gaps 4
 	//center-focused-column "on-overflow"
 	//empty-workspace-above-first 
 	always-center-single-column
- 	background-color "transparent"
+	background-color "transparent"
 
 
 default-column-width {
@@ -273,17 +279,17 @@ gestures {
 }
 
 window-rule { 
-	match app-id="galculator"
-	match app-id="blueman-manager"
-	match app-id="xdg-desktop-portal"
-	match app-id="clipse-gui"
-	open-floating true
+	opacity 0.85
 }
 
 window-rule { 
-	match app-id="zoom"
-	match is-focused=false
-	open-focused false
+	match app-id=r#"^gnome-calculator$"#
+	match app-id=r#"^galculator$"#
+	match app-id=r#"^blueman-manager$"#
+	match app-id=r#"^org\.gnome\.Nautilus$"#
+	match app-id=r#"^xdg-desktop-portal$"#
+	match app-id=r#"^Throne$"#
+	open-floating true
 }
 
 window-rule {
@@ -293,9 +299,10 @@ window-rule {
 }
 
 window-rule {
-	match app-id="Alacritty"
-	match app-id="zen"
-	match app-id="kitty"
+	match app-id=r#"^Alacritty$"#
+	match app-id=r#"^zen$"#
+	match app-id=r#"^com.mitchellh.ghostty$"#
+	match app-id=r#"^kitty$"#
 	draw-border-with-background false
 }
 
@@ -320,27 +327,11 @@ window-rule {
 }
 
 window-rule {
-	match app-id="firefox"
-	match app-id="zen"
-	match app-id="discod"
-	match app-id="steam"
+	match app-id=r#"^firefox$"#
+	match app-id=r#"^zen$"#
+	match app-id=r#"^discord$"#
+	match app-id=r#"^steam$"#
 	open-maximized true
-}
-
-window-rule {
-draw-border-with-background false
-
-//    match app-id="code"
-    match app-id="kitty"
-//    match app-id="vesktop"
-//    match app-id="org.qbittorrent.qBittorrent"
-//    match app-id="org.gnome.Nautilus"
-    match app-id="obsidian"
-    match app-id="zen"
-//    match app-id="obs-studio"
-//    match app-id="org.telegram.desktop"
-    opacity 0.98
-
 }
 
 window-rule {
@@ -362,9 +353,8 @@ layer-rule {
 }
 
 layer-rule {
-	match namespace="swww-daemon"
-	match namespace="mpvpaper"
-	match namespace="awww-daemon"
+	match namespace="^quickshell$"	
+	match namespace="dms:blurwallpaper"
 	place-within-backdrop true
 }
 
@@ -414,4 +404,3 @@ animations {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 }
-
